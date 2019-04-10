@@ -1,20 +1,21 @@
-from django.http import HttpResponse
 from django.shortcuts import render
+from .models import Items
+from .forms import RawProductForm
 
-# Create your views here.
 # Catalogue View
-def list_view(request, *args, **kwargs):
-
-    # Variable to store database items
-    catalogue_listing = {
-        # Entries placed here
-        # list_entry = ['Deepak', '21 March 2019', True]
-    }
-
-    return render(request, "list.html", catalogue_listing)
+def list_view(request):
+    return render(request, "list.html", {})
 
 # Input View
-def input_view(request, *args, **kwargs):
-    print(args, kwargs)
-    print(request.user)
-    return render(request, "input.html", {})
+def input_view(request):
+    form = RawProductForm()
+    if request.method == "POST":
+        form = RawProductForm(request.POST)
+        if form.is_valid():
+            Items.objects.create(**form.cleaned_data)
+        form = RawProductForm()
+
+    context = {
+        'form': form
+    }
+    return render(request, "input.html", context)
