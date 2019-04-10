@@ -39,11 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     #Third Party
-    # 'materialize',
 
     #Personal
     'products',
-    'pages',
 ]
 
 MIDDLEWARE = [
@@ -61,7 +59,7 @@ ROOT_URLCONF = 'catalogue.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, "templates")],
+        'DIRS': [os.path.join(BASE_DIR, "products/templates")],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
