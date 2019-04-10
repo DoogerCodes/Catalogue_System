@@ -16,6 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from pages.views import catalogue_view, input_view
+
 urlpatterns = [
+    path('', catalogue_view, name='catalogue'),
+    path('input/', input_view, name='input'),
     path('admin/', admin.site.urls),
 ]

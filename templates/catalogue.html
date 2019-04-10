@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Catalogue Listing</h1>
+  <p>{{request.user}}</p>
+  <table>
+    <tr>
+      <th>Item</th>
+      <th>Date</th>
+      <th>Valid</th>
+    </tr>
+
+    <tr>
+      <td>Test</td>
+      <td>Test</td>
+      <td><input type="checkbox" checked disabled></td>
+    </tr>
+
+    <!-- loop through entries here -->
+    <!-- {% for entry_field in list_entry %}
+      <tr>
+        <td>{{ entry_field }}</td>
+      </tr>
+    {% endfor %} -->
+  </table>
+{% endblock %}
