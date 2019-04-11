@@ -17,7 +17,11 @@ def input_view(request):
         form = RawProductForm(request.POST)
         if form.is_valid():
             Items.objects.create(**form.cleaned_data)
-        form = RawProductForm()
+            form = RawProductForm()
+        else:
+            form.errors
+
+
 
     context = {
         'form': form
