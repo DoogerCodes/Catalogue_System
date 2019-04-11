@@ -1,26 +1,35 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h1>Catalogue Listing</h1>
-  <p>{{request.user}}</p>
-  <table>
-    <tr>
-      <th>Item</th>
-      <th>Date</th>
-      <th>Valid</th>
-    </tr>
 
-    <tr>
-      <td>Test</td>
-      <td>Test</td>
-      <td><input type="checkbox" checked disabled></td>
-    </tr>
+  <div class="container">
+    <div class="" align="center">
+      <h2>Catalogue Listing</h2>
+    </div>
 
-    <!-- loop through entries here -->
-    <!-- {% for entry_field in list_entry %}
-      <tr>
-        <td>{{ entry_field }}</td>
-      </tr>
-    {% endfor %} -->
-  </table>
+    <div align="center">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Date</th>
+            <th>Valid</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {% for instance in object_list %}
+            <tr>
+              <td>{{instance.Item_Description}}</td>
+              <td>{{instance.Date}}</td>
+              <td>{{instance.Validity}}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <div class="" align="right">
+      <a class="btn btn-primary" href="/input/">Add Entry</a>
+    </div>
+  </div>
 {% endblock %}

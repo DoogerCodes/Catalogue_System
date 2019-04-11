@@ -4,7 +4,11 @@ from .forms import RawProductForm
 
 # Catalogue View
 def list_view(request):
-    return render(request, "list.html", {})
+    queryset = Items.objects.all()
+    context = {
+        "object_list": queryset
+    }
+    return render(request, "list.html", context)
 
 # Input View
 def input_view(request):
