@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from .models import Items
 from .forms import RawProductForm
+from django.http import HttpResponse, HttpResponseRedirect
+from django.urls import reverse
 
 # Catalogue View
 def list_view(request):
@@ -17,13 +19,12 @@ def input_view(request):
         form = RawProductForm(request.POST)
         if form.is_valid():
             Items.objects.create(**form.cleaned_data)
-            form = RawProductForm()
+            # form = RawProductForm()
+            return HttpResponseRedirect(reverse('list'))
         else:
             form.errors
-
-
-
     context = {
         'form': form
     }
+    # return HttpResponseRedirect(reverse('list'))
     return render(request, "input.html", context)
